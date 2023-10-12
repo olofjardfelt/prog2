@@ -40,7 +40,7 @@ def main():
 	print(fib_python_numba(7))
 
 #	n_list = [n for n in range(30, 40)]
-#	print("Now performing timing tests")
+#	print("Now performing timing tests for 30 to 39")
 #	py_time = []
 #	for n in range(30, 40):
 #		start = pf()
@@ -79,35 +79,47 @@ def main():
 #	pp.tight_layout()
 #	pp.savefig(fname="timing30to40")
 
-	n_list = [n for n in range(20, 31)]
-	print("Now performing timing tests")
-	py_time = []
-	for n in range(20, 31):
-		start = pf()
-		print(fib_python(n))
-		end = pf()
-		py_time.append(end - start)
-	print("Done with python timing")
-	py_numba_time = []
-	for n in range(20, 31):
-		start = pf()
-		print(fib_python_numba(n))
-		end = pf()
-		py_numba_time.append(end - start)
-	print("Done with numba timing")
-	fig, axes = pp.subplots(1, 2, figsize=(15, 4))
-	for i, y in enumerate([py_time, py_numba_time]):
-		ax = axes[i]
-		ax.set_xlabel("n")
-		ax.set_ylabel("seconds")
-		ax.grid(True)
-		if i == 0:
-			ax.set_title("normal python time")
-		if i == 1:
-			ax.set_title("numba python time")
-		ax.bar(n_list, y)
-	pp.tight_layout()
-	pp.savefig(fname="timing20to30")
+#	n_list = [n for n in range(20, 31)]
+#	print("Now performing timing tests for 20 to 30")
+#	py_time = []
+#	for n in range(20, 31):
+#		start = pf()
+#		print(fib_python(n))
+#		end = pf()
+#		py_time.append(end - start)
+#	print("Done with python timing")
+#	py_numba_time = []
+#	for n in range(20, 31):
+#		start = pf()
+#		print(fib_python_numba(n))
+#		end = pf()
+#		py_numba_time.append(end - start)
+#	print("Done with numba timing")
+#	fig, axes = pp.subplots(1, 2, figsize=(15, 4))
+#	for i, y in enumerate([py_time, py_numba_time]):
+#		ax = axes[i]
+#		ax.set_xlabel("n")
+#		ax.set_ylabel("seconds")
+#		ax.grid(True)
+#		if i == 0:
+#			ax.set_title("normal python time")
+#		if i == 1:
+#			ax.set_title("numba python time")
+#		ax.bar(n_list, y)
+#	pp.tight_layout()
+#	pp.savefig(fname="timing20to30")
+
+	print("Now calculating fib(47) with python using numba")
+	print(fib_python_numba(47))
+	print("Now calculating fib(47) with c++)")
+	f = Person(47)
+	print(f.fib())
+
+	'''
+	The value using c++ becomes negative because of integer overflow. In this case it could be solved by using unsigned int since we don't
+	care about negatvie values.
+	'''
+
 
 
 if __name__ == '__main__':
