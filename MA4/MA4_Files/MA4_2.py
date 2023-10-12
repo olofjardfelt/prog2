@@ -39,24 +39,24 @@ def main():
 	print(fib_python_numba(5))
 	print(fib_python_numba(7))
 
-	n_list = [n for n in range(30, 40)]
-	print("Now performing timing tests for 30 to 39")
+	n_list = [n for n in range(30, 41)]
+	print("Now performing timing tests for 30 to 40")
 	py_time = []
-	for n in range(30, 40):
+	for n in range(30, 41):
 		start = pf()
 		print(fib_python(n))
 		end = pf()
 		py_time.append(end - start)
 	print("Done with python timing")
 	py_numba_time = []
-	for n in range(30, 40):
+	for n in range(30, 41):
 		start = pf()
 		print(fib_python_numba(n))
 		end = pf()
 		py_numba_time.append(end - start)
 	print("Done with numba timing")
 	cpp_time = []
-	for n in range(30, 40):
+	for n in range(30, 41):
 		start = pf()
 		f = Person(n)
 		print(f.fib())
