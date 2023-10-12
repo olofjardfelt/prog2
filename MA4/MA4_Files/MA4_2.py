@@ -63,6 +63,7 @@ def main():
 		end = pf()
 		cpp_time.append(end - start)
 
+	pp.figure(1)
 	for i, y in enumerate([py_time, py_numba_time, cpp_time]):
 		pp.xlabel("n")
 		pp.ylabel("seconds")
@@ -97,6 +98,7 @@ def main():
 		py_numba_time.append(end - start)
 	print("Done with numba timing")
 
+	pp.figure(2)
 	for i, y in enumerate([py_time, py_numba_time]):
 		pp.xlabel("n")
 		pp.ylabel("seconds")
@@ -111,11 +113,11 @@ def main():
 	pp.tight_layout()
 	pp.savefig(fname="timing20to30")
 
-	print("Now calculating fib(47) with python using numba")
-	print(fib_python_numba(47))
-	print("Now calculating fib(47) with c++")
-	f = Person(47)
-	print(f.fib())
+#	print("Now calculating fib(47) with python using numba")
+#	print(fib_python_numba(47))
+#	print("Now calculating fib(47) with c++")
+#	f = Person(47)
+#	print(f.fib())
 
 	'''
 	Output:
