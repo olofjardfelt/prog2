@@ -72,6 +72,7 @@ def main():
 			ax.set_title("numba python time")
 		if i == 2:
 			ax.set_title("cpp time")
+		ax.plot(n_list, y)
 pp.tight_layout()
 pp.savefig(fname="timing30to45")
 
