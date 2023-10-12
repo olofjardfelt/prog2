@@ -73,8 +73,8 @@ def main():
 		if i == 2:
 			ax.set_title("cpp time")
 		ax.plot(n_list, y)
-pp.tight_layout()
-pp.savefig(fname="timing30to40")
+	pp.tight_layout()
+	pp.savefig(fname="timing30to40")
 
 
 
