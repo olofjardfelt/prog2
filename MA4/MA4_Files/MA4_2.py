@@ -66,13 +66,16 @@ def main():
 	fig, axes = pp.subplots(1, 3, figsize=(15, 4))
 	for i, y in enumerate([py_time, py_numba_time, cpp_time]):
 		ax = axes[i]
+		ax.set_xlabel("n")
+		ax.set_ylabel("seconds")
+		ax.grid(True)
 		if i == 0:
 			ax.set_title("normal python time")
 		if i == 1:
 			ax.set_title("numba python time")
 		if i == 2:
 			ax.set_title("cpp time")
-		ax.plot(n_list, y)
+		ax.bar(n_list, y)
 	pp.tight_layout()
 	pp.savefig(fname="timing30to40")
 
