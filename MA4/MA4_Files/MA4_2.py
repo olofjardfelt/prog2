@@ -39,32 +39,64 @@ def main():
 	print(fib_python_numba(5))
 	print(fib_python_numba(7))
 
-	n_list = [n for n in range(30, 40)]
+#	n_list = [n for n in range(30, 40)]
+#	print("Now performing timing tests")
+#	py_time = []
+#	for n in range(30, 40):
+#		start = pf()
+#		print(fib_python(n))
+#		end = pf()
+#		py_time.append(end - start)
+#	print("Done with python timing")
+#	py_numba_time = []
+#	for n in range(30, 40):
+#		start = pf()
+#		print(fib_python_numba(n))
+#		end = pf()
+#		py_numba_time.append(end - start)
+#	print("Done with numba timing")
+#	cpp_time = []
+#	for n in range(30, 40):
+#		start = pf()
+#		f = Person(n)
+#		print(f.fib())
+#		end = pf()
+#		cpp_time.append(end - start)
+#
+#	fig, axes = pp.subplots(1, 3, figsize=(15, 4))
+#	for i, y in enumerate([py_time, py_numba_time, cpp_time]):
+#		ax = axes[i]
+#		ax.set_xlabel("n")
+#		ax.set_ylabel("seconds")
+#		ax.grid(True)
+#		if i == 0:
+#			ax.set_title("normal python time")
+#		if i == 1:
+#			ax.set_title("numba python time")
+#		if i == 2:
+#			ax.set_title("cpp time")
+#		ax.bar(n_list, y)
+#	pp.tight_layout()
+#	pp.savefig(fname="timing30to40")
+
+	n_list = [n for n in range(20, 31)]
 	print("Now performing timing tests")
 	py_time = []
-	for n in range(30, 40):
+	for n in range(20, 31):
 		start = pf()
 		print(fib_python(n))
 		end = pf()
 		py_time.append(end - start)
 	print("Done with python timing")
 	py_numba_time = []
-	for n in range(30, 40):
+	for n in range(20, 31):
 		start = pf()
 		print(fib_python_numba(n))
 		end = pf()
 		py_numba_time.append(end - start)
 	print("Done with numba timing")
-	cpp_time = []
-	for n in range(30, 40):
-		start = pf()
-		f = Person(n)
-		print(f.fib())
-		end = pf()
-		cpp_time.append(end - start)
-
-	fig, axes = pp.subplots(1, 3, figsize=(15, 4))
-	for i, y in enumerate([py_time, py_numba_time, cpp_time]):
+	fig, axes = pp.subplots(1, 2, figsize=(15, 4))
+	for i, y in enumerate([py_time, py_numba_time]):
 		ax = axes[i]
 		ax.set_xlabel("n")
 		ax.set_ylabel("seconds")
@@ -73,12 +105,9 @@ def main():
 			ax.set_title("normal python time")
 		if i == 1:
 			ax.set_title("numba python time")
-		if i == 2:
-			ax.set_title("cpp time")
 		ax.bar(n_list, y)
 	pp.tight_layout()
-	pp.savefig(fname="timing30to40")
-
+	pp.savefig(fname="timing20to30")
 
 
 if __name__ == '__main__':
