@@ -74,7 +74,7 @@ def main():
 			ax.set_title("cpp time")
 		ax.plot(n_list, y)
 pp.tight_layout()
-pp.savefig(fname="timing30to45")
+pp.savefig(fname="timing30to40")
 
 
 
