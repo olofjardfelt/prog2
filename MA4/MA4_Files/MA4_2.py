@@ -39,83 +39,91 @@ def main():
 	print(fib_python_numba(5))
 	print(fib_python_numba(7))
 
-#	n_list = [n for n in range(30, 40)]
-#	print("Now performing timing tests for 30 to 39")
-#	py_time = []
-#	for n in range(30, 40):
-#		start = pf()
-#		print(fib_python(n))
-#		end = pf()
-#		py_time.append(end - start)
-#	print("Done with python timing")
-#	py_numba_time = []
-#	for n in range(30, 40):
-#		start = pf()
-#		print(fib_python_numba(n))
-#		end = pf()
-#		py_numba_time.append(end - start)
-#	print("Done with numba timing")
-#	cpp_time = []
-#	for n in range(30, 40):
-#		start = pf()
-#		f = Person(n)
-#		print(f.fib())
-#		end = pf()
-#		cpp_time.append(end - start)
-#
-#	fig, axes = pp.subplots(1, 3, figsize=(15, 4))
-#	for i, y in enumerate([py_time, py_numba_time, cpp_time]):
-#		ax = axes[i]
-#		ax.set_xlabel("n")
-#		ax.set_ylabel("seconds")
-#		ax.grid(True)
-#		if i == 0:
-#			ax.set_title("normal python time")
-#		if i == 1:
-#			ax.set_title("numba python time")
-#		if i == 2:
-#			ax.set_title("cpp time")
-#		ax.bar(n_list, y)
-#	pp.tight_layout()
-#	pp.savefig(fname="timing30to40")
+	n_list = [n for n in range(30, 40)]
+	print("Now performing timing tests for 30 to 39")
+	py_time = []
+	for n in range(30, 40):
+		start = pf()
+		print(fib_python(n))
+		end = pf()
+		py_time.append(end - start)
+	print("Done with python timing")
+	py_numba_time = []
+	for n in range(30, 40):
+		start = pf()
+		print(fib_python_numba(n))
+		end = pf()
+		py_numba_time.append(end - start)
+	print("Done with numba timing")
+	cpp_time = []
+	for n in range(30, 40):
+		start = pf()
+		f = Person(n)
+		print(f.fib())
+		end = pf()
+		cpp_time.append(end - start)
 
-#	n_list = [n for n in range(20, 31)]
-#	print("Now performing timing tests for 20 to 30")
-#	py_time = []
-#	for n in range(20, 31):
-#		start = pf()
-#		print(fib_python(n))
-#		end = pf()
-#		py_time.append(end - start)
-#	print("Done with python timing")
-#	py_numba_time = []
-#	for n in range(20, 31):
-#		start = pf()
-#		print(fib_python_numba(n))
-#		end = pf()
-#		py_numba_time.append(end - start)
-#	print("Done with numba timing")
-#	fig, axes = pp.subplots(1, 2, figsize=(15, 4))
-#	for i, y in enumerate([py_time, py_numba_time]):
-#		ax = axes[i]
-#		ax.set_xlabel("n")
-#		ax.set_ylabel("seconds")
-#		ax.grid(True)
-#		if i == 0:
-#			ax.set_title("normal python time")
-#		if i == 1:
-#			ax.set_title("numba python time")
-#		ax.bar(n_list, y)
-#	pp.tight_layout()
-#	pp.savefig(fname="timing20to30")
+	for i, y in enumerate([py_time, py_numba_time, cpp_time]):
+		pp.xlabel("n")
+		pp.ylabel("seconds")
+		pp.grid(True)
+		if i == 0:
+			pp.title("Normal python time")
+		if i == 1:
+			pp.title("Numba python time")
+		if i == 2:
+			pp.title("C++ time")
+		pp.plot(n_list, y)
+
+	pp.legend(['Normal Python', 'Python with Numba', 'C++'])
+	pp.yscale('log')
+	pp.tight_layout()
+	pp.savefig(fname="timing30to40")
+
+	n_list = [n for n in range(20, 31)]
+	print("Now performing timing tests for 20 to 30")
+	py_time = []
+	for n in range(20, 31):
+		start = pf()
+		print(fib_python(n))
+		end = pf()
+		py_time.append(end - start)
+	print("Done with python timing")
+	py_numba_time = []
+	for n in range(20, 31):
+		start = pf()
+		print(fib_python_numba(n))
+		end = pf()
+		py_numba_time.append(end - start)
+	print("Done with numba timing")
+
+	for i, y in enumerate([py_time, py_numba_time]):
+		pp.xlabel("n")
+		pp.ylabel("seconds")
+		pp.grid(True)
+		if i == 0:
+			pp.title("Normal python time")
+		if i == 1:
+			pp.title("Numba python time")
+		pp.plot(n_list, y)
+	pp.legend(['Normal python', 'Python with Numba', 'C++'])
+	pp.yscale('log')
+	pp.tight_layout()
+	pp.savefig(fname="timing20to30")
 
 	print("Now calculating fib(47) with python using numba")
 	print(fib_python_numba(47))
-	print("Now calculating fib(47) with c++)")
+	print("Now calculating fib(47) with c++")
 	f = Person(47)
 	print(f.fib())
 
 	'''
+	Output:
+	Now calculating fib(47) with python using numba
+        2971215073
+        Now calculating fib(47) with c++
+        -1323752223
+
 	The value using c++ becomes negative because of integer overflow. In this case it could be solved by using unsigned int since we don't
 	care about negatvie values.
 	'''
